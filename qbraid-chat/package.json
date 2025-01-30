@@ -1,0 +1,46 @@
+{
+  "name": "qbraid-chat",
+  "version": "0.1.0",
+  "description": "A VS Code extension for interacting with the qBraid API.",
+  "main": "./out/extension.js",
+  "scripts": {
+    "build": "tsc",
+    "vsce:package": "vsce package"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onCommand:qbraidChat.configureApiKey",
+    "onCommand:qbraidChat.fetchChatModels",
+    "onCommand:qbraidChat.sendChatMessage"
+  ],
+  "contributes": {
+    "commands": [
+        {
+            "command": "qbraidChat.configureApiKey",
+            "title": "qbraidChat: Configure API Key"
+        },
+        {
+            "command": "qbraidChat.fetchChatModels",
+            "title": "qbraidChat: Fetch Chat Models"
+        },
+        {
+            "command": "qbraidChat.sendChatMessage",
+            "title": "qbraidChat: Send Chat Message"
+        }
+    ]
+},
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.2.2",
+    "@vscode/vsce": "^2.32.0"
+  },
+  "publisher": "rajatbalda",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajatbalda/qbraid-chat"
+  },
+  "license": "MIT"
+}

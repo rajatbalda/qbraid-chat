@@ -1,0 +1,79 @@
+{
+    "name": "qbraid-chat",
+    "displayName": "qBraid Chat",
+    "description": "qBraid Chat Extension for VS Code",
+    "version": "0.1.0",
+    "publisher": "rajatbalda",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other",
+        "Chat",
+        "AI"
+    ],
+    "main": "out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "qbraid-chat",
+                    "title": "qBraid Chat",
+                    "icon": "media/icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "qbraid-chat": [
+                {
+                    "type": "webview",
+                    "id": "qbraid-chat-view",
+                    "name": "Chat",
+                    "icon": "media/icon.svg"
+                }
+            ]
+        },
+        "configuration": {
+        "title": "qBraid Chat Settings",
+        "properties": {
+        "qbraid-chat.apiKey": {
+            "type": "string",
+            "default": "",
+            "description": "API Key for qBraid Chat",
+            "markdownDescription": "This API key is read from the `~/.qbraid/qbraidrc` file. Ensure the file contains a valid API key in the format: `api-key = YOUR_QBRAID_API_KEY`.",
+            "scope": "machine",
+            "pattern": "^[A-Za-z0-9-_]+$",
+            "patternErrorMessage": "Invalid API Key format."
+        }
+    }
+}
+
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc --watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js",
+        "vsce:package": "vsce package",
+        "clean": "rimraf out",
+        "build": "npm run clean && npm run compile"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.10",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.85.0",
+        "@typescript-eslint/eslint-plugin": "^6.15.0",
+        "@typescript-eslint/parser": "^6.15.0",
+        "@vscode/test-electron": "^2.3.8",
+        "@vscode/vsce": "^3.2.1",
+        "esbuild": "^0.19.0",
+        "eslint": "^8.56.0",
+        "typescript": "^5.3.3",
+        "rimraf": "^5.0.0"
+    },
+    "dependencies": {
+        "axios": "^1.6.0"
+    }
+}
